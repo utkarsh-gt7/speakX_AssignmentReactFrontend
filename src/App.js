@@ -3,15 +3,14 @@ import { fetchQuestionsByTitle, fetchQuestionsByType } from "./grpcClient";
 import "./App.css";
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState(""); // Search input
-  const [selectedType, setSelectedType] = useState("ALL"); // Selected question type
-  const [questions, setQuestions] = useState([]); // Fetched questions
-  const [pageNumber, setPageNumber] = useState(1); // Current page number
-  const [error, setError] = useState(""); // Error message
-  const [isLoading, setIsLoading] = useState(false); // Loading state
-  const [isFreshSearch, setIsFreshSearch] = useState(true); // Flag for fresh search
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedType, setSelectedType] = useState("ALL");
+  const [questions, setQuestions] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFreshSearch, setIsFreshSearch] = useState(true);
 
-  // Function to fetch questions by title or type
   const handleSearch = async () => {
     if (isFreshSearch) {
       setPageNumber(1);
@@ -28,10 +27,8 @@ function App() {
     try {
       let data;
       if (selectedType !== "ALL") {
-        // Fetch by question type
         data = await fetchQuestionsByType(selectedType, pageNumber, 10);
       } else {
-        // Fetch by title
         data = await fetchQuestionsByTitle(searchQuery, pageNumber, 10);
       }
       setQuestions(data.questionsList || []);
@@ -39,17 +36,15 @@ function App() {
       setError(err);
     } finally {
       setIsLoading(false);
-      setIsFreshSearch(false); // After successful search, set it to false
+      setIsFreshSearch(false);
     }
   };
 
-  // Handle Next Page
   const handleNextPage = async () => {
     setPageNumber((prev) => prev + 1);
     handleSearch();
   };
 
-  // Handle Previous Page
   const handlePrevPage = async () => {
     setPageNumber((prev) => Math.max(1, prev - 1));
     handleSearch();
@@ -57,22 +52,18 @@ function App() {
 
   const dismissError = () => setError("");
 
-  // Automatically switch back to "ALL" when the search bar is clicked
   const handleSearchBarClick = () => {
     if (selectedType !== "ALL") {
       setSelectedType("ALL");
     }
   };
 
-  // Automatically trigger fetch when type changes
   useEffect(() => {
     if (selectedType !== "ALL") {
-      // If user selects a type, fetch the questions automatically
       handleSearch();
     }
-  }, [selectedType]); // Trigger on selectedType change
+  }, [selectedType]);
 
-  // Function to render MCQ options with the correct one tagged
   const renderMCQOptions = (options) => {
     return options.map((option, idx) => (
       <div
@@ -90,7 +81,6 @@ function App() {
     ));
   };
 
-  // Function to render Anagram blocks with the correct one tagged
   const renderAnagramBlocks = (blocks) => {
     return blocks.map((block, idx) => (
       <div
@@ -112,14 +102,13 @@ function App() {
       <header className="app-header">
         <h1>Search Questions</h1>
 
-        {/* Search bar container */}
         <div className="search-bar-container">
           <div className="search-bar">
             <input
               type="text"
               placeholder="Enter search query"
               value={searchQuery}
-              onClick={handleSearchBarClick} // Switch type to "ALL" on click
+              onClick={handleSearchBarClick}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
             <button onClick={handleSearch} disabled={isLoading}>
@@ -127,13 +116,12 @@ function App() {
             </button>
           </div>
 
-          {/* Dropdown for selecting question type */}
           <div className="dropdown-container">
             <select
               value={selectedType}
               onChange={(e) => {
                 setSelectedType(e.target.value);
-                setIsFreshSearch(true); // Mark this as fresh search when changing type
+                setIsFreshSearch(true);
               }}
             >
               <option value="ALL">All Types</option>
@@ -165,13 +153,10 @@ function App() {
                 <li key={idx} style={{ marginBottom: "20px" }}>
                   <strong>{q.title}</strong> - <em>{q.type}</em>
 
-                  {/* Render MCQ options */}
                   {q.type === "MCQ" && renderMCQOptions(q.optionsList)}
 
-                  {/* Render Anagram blocks */}
                   {q.type === "ANAGRAM" && renderAnagramBlocks(q.blocksList)}
 
-                  {/* Solution display */}
                   {q.solution && (
                     <div
                       style={{

@@ -3,7 +3,6 @@ import { TitleRequest, TypeRequest } from './proto/question_pb';
 
 const grpcClient = new QuestionServiceClient('http://localhost:8080');
 
-// Function to fetch questions by title
 export const fetchQuestionsByTitle = (title, pageNumber = 1, pageSize = 10) => {
   return new Promise((resolve, reject) => {
     const request = new TitleRequest();
@@ -22,7 +21,6 @@ export const fetchQuestionsByTitle = (title, pageNumber = 1, pageSize = 10) => {
   });
 };
 
-// Function to fetch questions by type
 export const fetchQuestionsByType = (type, pageNumber = 1, pageSize = 10) => {
   return new Promise((resolve, reject) => {
     const request = new TypeRequest();
