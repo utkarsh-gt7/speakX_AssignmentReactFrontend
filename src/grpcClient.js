@@ -1,7 +1,7 @@
 import { QuestionServiceClient } from './proto/question_grpc_web_pb';
 import { TitleRequest, TypeRequest } from './proto/question_pb';
 
-const grpcClient = new QuestionServiceClient('http://localhost:8080');
+const grpcClient = new QuestionServiceClient('https://speakxgrpcproxy.onrender.com:1000');
 
 export const fetchQuestionsByTitle = (title, pageNumber = 1, pageSize = 10) => {
   return new Promise((resolve, reject) => {
