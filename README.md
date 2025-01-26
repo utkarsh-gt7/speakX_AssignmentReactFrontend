@@ -1,3 +1,12 @@
+# Run this app locally
+
+In the grpcClient.js file make the 4 line like this => const grpcClient = new QuestionServiceClient('http://localhost:8080');
+And make sure your proxy server is running on port 8080.
+This frontend first communicates with the proxy server and then with the base server. So don't forget to check out those two repos first.
+
+Proxy server repo => https://github.com/utkarsh-gt7/speakxGRPCProxy/tree/main
+Base gRPC server repo => https://github.com/utkarsh-gt7/speakX_AssignmentServer/tree/main
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
