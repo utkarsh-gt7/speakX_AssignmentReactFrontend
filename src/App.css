@@ -1,0 +1,211 @@
+/* General container for the app */
+.app {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Header styling */
+.app-header {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+/* Container for search bar and dropdown */
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 300px;
+  max-width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-left: 20px;
+  max-width: 200px;
+}
+
+/* Error message styling */
+.error {
+  color: red;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Loading spinner */
+.spinner {
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
+
+/* Results section */
+.results {
+  margin-top: 20px;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+li {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 10px auto;
+  max-width: 400px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .search-bar-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input[type="text"] {
+    width: 80%;
+    max-width: 100%;
+  }
+
+  select {
+    width: 80%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  button {
+    width: 80%;
+    max-width: 100%;
+  }
+
+  .pagination {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pagination button {
+    width: 80%;
+    max-width: 100%;
+  }
+
+  .error {
+    font-size: 1rem;
+  }
+
+  .spinner {
+    font-size: 1rem;
+  }
+
+  .results ul {
+    padding: 0;
+    list-style-type: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .search-bar-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .pagination button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .results {
+    font-size: 0.9rem;
+  }
+}
