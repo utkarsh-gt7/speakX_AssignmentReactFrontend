@@ -1,5 +1,8 @@
 # Run this app locally
 
+Deployed version of this website is still work under progress. Meanwhile you can build this app locally and check it out. Deployed version will be
+available on this link => https://questionsearch-utkarsh-gt7.netlify.app/ working as per requirements by the evening of 27/01/25 positively.
+
 In the grpcClient.js file make the 4 line like this => const grpcClient = new QuestionServiceClient('http://localhost:8080');
 And make sure your proxy server is running on port 8080.
 This frontend first communicates with the proxy server and then with the base server. So don't forget to check out those two repos first.
