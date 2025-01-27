@@ -1,5 +1,9 @@
 # Run this app locally
 
+![image](https://github.com/user-attachments/assets/363683f3-f6ef-4039-a996-bd1a8fa9d01f)
+
+![image](https://github.com/user-attachments/assets/98cd4e54-3e71-4a87-8736-28bdc1ac3b9c)
+
 Deployed version of this website is still work under progress. Meanwhile you can build this app locally and check it out. Deployed version will be
 available on this link => https://questionsearch-utkarsh-gt7.netlify.app/ working as per requirements by the evening of 27/01/25 positively.
 
